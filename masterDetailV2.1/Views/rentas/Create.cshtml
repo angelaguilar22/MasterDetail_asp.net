@@ -1,0 +1,296 @@
+﻿@model masterDetailV2._1.Models.RentasDetailsAndHeader
+
+@{
+    //ViewBag.Title = "Create";
+}
+
+<!-- INICIO DE SECCION DE SCRIPTS -->
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<script src="~/Scripts/jquery.validate.min.js"></script>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+<div class="">
+    <h2>Rentas</h2>
+
+    <div>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h4>rentas</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="col-md-12">
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model.renta.folio, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.renta.folio, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.renta.folio, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model.renta.fechaCreacion, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.renta.fechaCreacion, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.renta.fechaCreacion, "", new { @class = "text-danger" })
+                    </div>
+
+
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model.renta.fechaModificacion, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.renta.fechaModificacion, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.renta.fechaModificacion, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="col-md-12">
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model.renta.fechaRenta, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.renta.fechaRenta, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.renta.fechaRenta, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model.renta.fechaVence, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.renta.fechaVence, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.renta.fechaVence, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model.renta.subtotal, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.renta.subtotal, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.renta.subtotal, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="col-md-12">
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model.renta.total, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.renta.total, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.renta.total, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model.renta.cantidadTotalProd, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.renta.cantidadTotalProd, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.renta.cantidadTotalProd, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-md-3" style="margin-top: 28px">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+
+                </div>
+
+
+            </div>
+        }
+    </div>
+
+
+    <div class="col-md-12" style="margin-top: 30px; padding-left: 15px; padding-right: 15px;">
+        <a href="#" class="btn btn-default" onclick="addProducto(0)" style="margin-top: 30px">Agregar Producto</a>
+
+        <table class="table table-striped" style="margin-top: 20px">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Marca</th>
+                    <th>Numero de Serie</th>
+                    <th>Estado Fisico</th>
+                    <th>Precio Unitario</th>
+                    <th>Unidad de Medida</th>
+                    <th>Categoria</th>
+                    <th>Subtotal</th>
+                    <th>Acciones</th>
+                </tr>
+
+            </thead>
+            <tbody id="produtosList">
+                <!--     inicio de seccion de listado de PRODUCTOS -->
+                <tr id="loadingStatus"></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</div>
+
+<!-- SECCION DE MODAL PARA AGREGAR PRODUCTO -->
+@*Create A Popup Modal With Registration Form For Add Or Edit Student Record*@
+
+
+<div class="modal fade" id="MyModal" tabindex="-1" >
+
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <a href="#" class="close" data-dismiss="modal">&times;</a>
+                <h4 id="ModalTitle"></h4>
+            </div>
+
+            <!-- inicio de cuerpo del popup -->
+            <div class="modal-body">
+                <form id="form" name="formProd">
+                    <fieldset id="SubmitForm">
+                        <!-- Datos a mostrar-->
+                        @Html.HiddenFor(m => m.producto.id, new { @id = "prodId" })
+                        @Html.HiddenFor(m => m.producto.nombre, new { @id = "prodName" })
+
+                        <div class="form-group">
+                            <label class="control-label col-md-2">Producto</label>
+                            @Html.DropDownList("idProducto", null, "- Selecciona Producto -", htmlAttributes: new { @id = "prodId", @class = "form-control", @onchange = "onProductochange(this.value)" })
+
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-2">Descpción</label>
+                            @Html.TextBoxFor(m => m.producto.descripcion, new { @id = "prodDescripcion", @class = "form-control", @placeholder = "Descripcion" })
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-2">Numero de Serie</label>
+                            @Html.TextBoxFor(m => m.producto.numeroSerie, new { @id = "prodNmSerie", @class = "form-control", @placeholder = "Numero de Serie" })
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="control-label col-md-2">Precio</label>
+                            @Html.TextBoxFor(m => m.producto.precioUnitario, new { @type = "number", @id = "prodPrecio", @class = "form-control", @placeholder = "Precio Unitario" })
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="control-label col-md-2">Cantidad</label>
+                            @Html.TextBoxFor(m => m.producto.cantidad, new { @type = "number", @min = "0", @id = "prodCantidad", @class = "form-control", @placeholder = "Cantidad" })
+                        </div>
+
+                        @Html.HiddenFor(m => m.producto.tiposProductos.nombre, new { @id = "prodCategoria" })
+                        @Html.HiddenFor(m => m.producto.marcasProd.nombre, new { @id = "prodMarca" })
+                        @Html.HiddenFor(m => m.producto.unidadesMedida.nombre, new { @id = "prodUM" })
+                        @Html.HiddenFor(m => m.producto.estadoFisico, new { @id = "prodEstadoFisico" })
+                    </fieldset>
+                </form>
+            </div>
+            <!-- Fin de cuerpo del popup -->
+
+            <!-- Footer de popup -->
+            <div class="modal-footer">
+                <a href="#" class="btn btn-primary" id="SaveStudentRecord">Guardar</a>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            </div>
+            <!-- Footer de popup -->
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+    // Listado de productos
+    var listadoProductos = [];
+
+    //$("#loadingStatus").html("Cargando");
+
+    // Funcion pra mostrar el popup de add producto
+    function addProducto(StudentId) {
+        $("#form")[0].reset();
+        $("#StuId").val(0);
+        $("#DropDwn option:selected").text("--Select Dept--");
+        $("#ModalTitle").html("Agregar Producto");
+        $("#MyModal").modal();
+    }
+
+    // Funcion para validar el FORMULARIO DE AGREGAR PRODUCTO
+    $("form[name='formProd']").validate({
+        // Specify validation rules
+        rules: {
+            prodName: "required",
+        },
+        // Specify validation error messages
+        messages: {
+            prodName: "Please enter your firstname"
+        },
+        // Make sure the form is submitted to the destination defined
+        // in the "action" attribute of the form when valid
+        submitHandler: function (form) {
+            form.submit();
+            console.log('todo chido por aqui');
+        }
+    });
+
+    // Funcion para agregar un prodcuto al listado
+    $("#SaveStudentRecord").click(function () {
+        //var data = $("#SubmitForm").serialize();
+        var data1 = $("#SubmitForm").serializeArray();
+        var SetData = $("#produtosList");
+
+        console.log(data1);
+        var Data = "<tr class='row_" + data1[0].value + "'>" +
+            "<td>" + data1[1].value + "</td>" +
+            "<td>" + data1[3].value + "</td>" +
+            "<td>" + data1[8].value + "</td>" +
+            "<td>" + data1[4].value + "</td>" +
+            "<td>" + data1[10].value + "</td>" +
+            "<td>" + data1[5].value + "</td>" +
+            "<td>" + data1[9].value + "</td>" +
+            "<td>" + data1[7].value + "</td>" +
+            "<td>" + ( parseFloat(data1[5].value) * parseFloat(data1[6].value) ) + "</td>" +
+            "<td>" + "<a href='#' class='btn btn-warning' onclick='EditStudentRecord(" + data1[0].value + ")' ><span class='glyphicon glyphicon-edit'></span></a>" + "</td>" +
+            "<td>" + "<a href='#' class='btn btn-danger' onclick='DeleteStudentRecord(" + data1[0].value + ")'><span class='glyphicon glyphicon-trash'></span></a>" + "</td>" +
+            "</tr>";
+        SetData.append(Data);
+
+        $("#MyModal").modal("hide");
+        $("#loadingStatus").html(" ");
+    });
+
+    // Funcion para obtener el valor del del select de productos
+    function onProductochange(value) {
+        console.log(value);
+
+        // init peticion para obtener producto
+        getProduct(value);
+    }
+
+    // Funcion para obtener los datos completos del producto
+    function getProduct(idProducto) {
+        console.log(idProducto);
+        if (idProducto == '' || idProducto == null || idProducto == undefined) {
+        } else {
+            $.ajax({
+                url: 'http://localhost:50131/productos/GET_PRODUCT_BY_ID?id=' + idProducto,
+                success: function (respuesta) {
+                    console.log(respuesta);
+                    // Set value of producto
+                    $("#prodId").val(respuesta.id);
+                    $("#prodName").val(respuesta.nombre);
+                    $("#prodDescripcion").val(respuesta.descripcion);
+                    $("#prodNmSerie").val(respuesta.numeroSerie);
+                    $("#prodPrecio").val(respuesta.precioUnitario);
+                    $("#prodCategoria").val(respuesta.categoria);
+                    $("#prodMarca").val(respuesta.marca);
+                    $("#prodUM").val(respuesta.unidadMedida);
+                    $("#prodEstadoFisico").val(respuesta.estadoFisico);
+                },
+                error: function () {
+                    console.log("No se ha podido obtener la información");
+                }
+            });
+        }
+    }
+
+</script>
+

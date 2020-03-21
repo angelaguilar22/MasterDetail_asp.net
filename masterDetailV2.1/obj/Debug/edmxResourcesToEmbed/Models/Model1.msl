@@ -1,0 +1,249 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="RentaCamionesModelStoreContainer" CdmEntityContainer="RentaCamionesEntities">
+    <EntitySetMapping Name="almacen">
+      <EntityTypeMapping TypeName="RentaCamionesModel.almacen">
+        <MappingFragment StoreEntitySet="almacen">
+          <ScalarProperty Name="montoProductos" ColumnName="montoProductos" />
+          <ScalarProperty Name="noProductosALmacenados" ColumnName="noProductosALmacenados" />
+          <ScalarProperty Name="ubicacion" ColumnName="ubicacion" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="almacenProductos">
+      <EntityTypeMapping TypeName="RentaCamionesModel.almacenProductos">
+        <MappingFragment StoreEntitySet="almacenProductos">
+          <ScalarProperty Name="cantidadProducto" ColumnName="cantidadProducto" />
+          <ScalarProperty Name="idProducto" ColumnName="idProducto" />
+          <ScalarProperty Name="idAlmacen" ColumnName="idAlmacen" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="calendarios">
+      <EntityTypeMapping TypeName="RentaCamionesModel.calendarios">
+        <MappingFragment StoreEntitySet="calendarios">
+          <ScalarProperty Name="estatus" ColumnName="estatus" />
+          <ScalarProperty Name="idDescuento" ColumnName="idDescuento" />
+          <ScalarProperty Name="idTipo" ColumnName="idTipo" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="clientes">
+      <EntityTypeMapping TypeName="RentaCamionesModel.clientes">
+        <MappingFragment StoreEntitySet="clientes">
+          <ScalarProperty Name="estatus" ColumnName="estatus" />
+          <ScalarProperty Name="idTipoCliente" ColumnName="idTipoCliente" />
+          <ScalarProperty Name="razonSocial" ColumnName="razonSocial" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="apeMaterno" ColumnName="apeMaterno" />
+          <ScalarProperty Name="apePaterno" ColumnName="apePaterno" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="descuentos">
+      <EntityTypeMapping TypeName="RentaCamionesModel.descuentos">
+        <MappingFragment StoreEntitySet="descuentos">
+          <ScalarProperty Name="estatus" ColumnName="estatus" />
+          <ScalarProperty Name="tasa" ColumnName="tasa" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="empleados">
+      <EntityTypeMapping TypeName="RentaCamionesModel.empleados">
+        <MappingFragment StoreEntitySet="empleados">
+          <ScalarProperty Name="estatus" ColumnName="estatus" />
+          <ScalarProperty Name="idPuesto" ColumnName="idPuesto" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="apeMaterno" ColumnName="apeMaterno" />
+          <ScalarProperty Name="apePaterno" ColumnName="apePaterno" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="estatusRenta">
+      <EntityTypeMapping TypeName="RentaCamionesModel.estatusRenta">
+        <MappingFragment StoreEntitySet="estatusRenta">
+          <ScalarProperty Name="estatus" ColumnName="estatus" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="facturas">
+      <EntityTypeMapping TypeName="RentaCamionesModel.facturas">
+        <MappingFragment StoreEntitySet="facturas">
+          <ScalarProperty Name="monto" ColumnName="monto" />
+          <ScalarProperty Name="impuesto" ColumnName="impuesto" />
+          <ScalarProperty Name="subtotal" ColumnName="subtotal" />
+          <ScalarProperty Name="fechaCreaion" ColumnName="fechaCreaion" />
+          <ScalarProperty Name="folio" ColumnName="folio" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="marcasProd">
+      <EntityTypeMapping TypeName="RentaCamionesModel.marcasProd">
+        <MappingFragment StoreEntitySet="marcasProd">
+          <ScalarProperty Name="estatus" ColumnName="estatus" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="modulos">
+      <EntityTypeMapping TypeName="RentaCamionesModel.modulos">
+        <MappingFragment StoreEntitySet="modulos">
+          <ScalarProperty Name="estatus" ColumnName="estatus" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="productos">
+      <EntityTypeMapping TypeName="RentaCamionesModel.productos">
+        <MappingFragment StoreEntitySet="productos">
+          <ScalarProperty Name="idTipoProd" ColumnName="idTipoProd" />
+          <ScalarProperty Name="idMarca" ColumnName="idMarca" />
+          <ScalarProperty Name="idUM" ColumnName="idUM" />
+          <ScalarProperty Name="precioUnitario" ColumnName="precioUnitario" />
+          <ScalarProperty Name="estatus" ColumnName="estatus" />
+          <ScalarProperty Name="numeroExistencias" ColumnName="numeroExistencias" />
+          <ScalarProperty Name="estadoFisico" ColumnName="estadoFisico" />
+          <ScalarProperty Name="numeroSerie" ColumnName="numeroSerie" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="puesto">
+      <EntityTypeMapping TypeName="RentaCamionesModel.puesto">
+        <MappingFragment StoreEntitySet="puesto">
+          <ScalarProperty Name="estatus" ColumnName="estatus" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="rentaDetalle">
+      <EntityTypeMapping TypeName="RentaCamionesModel.rentaDetalle">
+        <MappingFragment StoreEntitySet="rentaDetalle">
+          <ScalarProperty Name="idRenta" ColumnName="idRenta" />
+          <ScalarProperty Name="entregado" ColumnName="entregado" />
+          <ScalarProperty Name="precioUnitario" ColumnName="precioUnitario" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="idProducto" ColumnName="idProducto" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="rentas">
+      <EntityTypeMapping TypeName="RentaCamionesModel.rentas">
+        <MappingFragment StoreEntitySet="rentas">
+          <ScalarProperty Name="cantidadTotalProd" ColumnName="cantidadTotalProd" />
+          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="subtotal" ColumnName="subtotal" />
+          <ScalarProperty Name="fechaVence" ColumnName="fechaVence" />
+          <ScalarProperty Name="fechaRenta" ColumnName="fechaRenta" />
+          <ScalarProperty Name="fechaModificacion" ColumnName="fechaModificacion" />
+          <ScalarProperty Name="fechaCreacion" ColumnName="fechaCreacion" />
+          <ScalarProperty Name="folio" ColumnName="folio" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="roles">
+      <EntityTypeMapping TypeName="RentaCamionesModel.roles">
+        <MappingFragment StoreEntitySet="roles">
+          <ScalarProperty Name="estatus" ColumnName="estatus" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="rolesUsuarioModulo">
+      <EntityTypeMapping TypeName="RentaCamionesModel.rolesUsuarioModulo">
+        <MappingFragment StoreEntitySet="rolesUsuarioModulo">
+          <ScalarProperty Name="idModulo" ColumnName="idModulo" />
+          <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+          <ScalarProperty Name="idRol" ColumnName="idRol" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tiposClientes">
+      <EntityTypeMapping TypeName="RentaCamionesModel.tiposClientes">
+        <MappingFragment StoreEntitySet="tiposClientes">
+          <ScalarProperty Name="estatus" ColumnName="estatus" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tiposDescuentos">
+      <EntityTypeMapping TypeName="RentaCamionesModel.tiposDescuentos">
+        <MappingFragment StoreEntitySet="tiposDescuentos">
+          <ScalarProperty Name="estatus" ColumnName="estatus" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tiposProductos">
+      <EntityTypeMapping TypeName="RentaCamionesModel.tiposProductos">
+        <MappingFragment StoreEntitySet="tiposProductos">
+          <ScalarProperty Name="estatus" ColumnName="estatus" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="unidadesMedida">
+      <EntityTypeMapping TypeName="RentaCamionesModel.unidadesMedida">
+        <MappingFragment StoreEntitySet="unidadesMedida">
+          <ScalarProperty Name="estatus" ColumnName="estatus" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usuarios">
+      <EntityTypeMapping TypeName="RentaCamionesModel.usuarios">
+        <MappingFragment StoreEntitySet="usuarios">
+          <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
+          <ScalarProperty Name="estatus" ColumnName="estatus" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+          <ScalarProperty Name="contrasena" ColumnName="contrasena" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

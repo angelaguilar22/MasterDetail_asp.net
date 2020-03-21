@@ -1,0 +1,729 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RentaCamionesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="almacen">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="descripcion" Type="nvarchar" MaxLength="100" />
+    <Property Name="ubicacion" Type="nvarchar" MaxLength="100" />
+    <Property Name="noProductosALmacenados" Type="int" Nullable="false" />
+    <Property Name="montoProductos" Type="decimal" Precision="16" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="almacenProductos">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idAlmacen" Type="int" Nullable="false" />
+    <Property Name="idProducto" Type="int" Nullable="false" />
+    <Property Name="cantidadProducto" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="calendarios">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="descripcion" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="idTipo" Type="int" Nullable="false" />
+    <Property Name="idDescuento" Type="int" Nullable="false" />
+    <Property Name="estatus" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="clientes">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="apePaterno" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="apeMaterno" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="direccion" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="correo" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="telefono" Type="nvarchar" MaxLength="100" />
+    <Property Name="razonSocial" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="idTipoCliente" Type="int" Nullable="false" />
+    <Property Name="estatus" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="descuentos">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="descripcion" Type="nvarchar" MaxLength="100" />
+    <Property Name="tasa" Type="decimal" Precision="8" Scale="2" Nullable="false" />
+    <Property Name="estatus" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="empleados">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="apePaterno" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="apeMaterno" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="direccion" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="correo" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="telefono" Type="nvarchar" MaxLength="100" />
+    <Property Name="idPuesto" Type="int" Nullable="false" />
+    <Property Name="estatus" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="estatusRenta">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="descripcion" Type="nvarchar" MaxLength="200" />
+    <Property Name="estatus" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="facturas">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="folio" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="fechaCreaion" Type="datetime" Nullable="false" />
+    <Property Name="subtotal" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="impuesto" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="monto" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="marcasProd">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="descripcion" Type="nvarchar" MaxLength="200" />
+    <Property Name="estatus" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="modulos">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="descripcion" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="estatus" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="productos">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="descripcion" Type="nvarchar" MaxLength="200" />
+    <Property Name="numeroSerie" Type="int" Nullable="false" />
+    <Property Name="estadoFisico" Type="nvarchar" MaxLength="200" />
+    <Property Name="numeroExistencias" Type="int" Nullable="false" />
+    <Property Name="estatus" Type="int" Nullable="false" />
+    <Property Name="precioUnitario" Type="decimal" Precision="16" Scale="4" />
+    <Property Name="idUM" Type="int" Nullable="false" />
+    <Property Name="idMarca" Type="int" Nullable="false" />
+    <Property Name="idTipoProd" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="puesto">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="descripcion" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="estatus" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="rentaDetalle">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idProducto" Type="int" Nullable="false" />
+    <Property Name="cantidad" Type="int" Nullable="false" />
+    <Property Name="precioUnitario" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="entregado" Type="int" Nullable="false" />
+    <Property Name="idRenta" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="rentas">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="folio" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="fechaCreacion" Type="datetime" Nullable="false" />
+    <Property Name="fechaModificacion" Type="datetime" Nullable="false" />
+    <Property Name="fechaRenta" Type="datetime" Nullable="false" />
+    <Property Name="fechaVence" Type="datetime" Nullable="false" />
+    <Property Name="subtotal" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="total" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="cantidadTotalProd" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="roles">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="descripcion" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="estatus" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="rolesUsuarioModulo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idRol" Type="int" Nullable="false" />
+    <Property Name="idUsuario" Type="int" Nullable="false" />
+    <Property Name="idModulo" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tiposClientes">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="descripcion" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="estatus" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tiposDescuentos">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="descripcion" Type="nvarchar" MaxLength="100" />
+    <Property Name="estatus" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tiposProductos">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="descripcion" Type="nvarchar" MaxLength="200" />
+    <Property Name="estatus" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="unidadesMedida">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="descripcion" Type="nvarchar" MaxLength="200" />
+    <Property Name="estatus" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="usuarios">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="usuario" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="contrasena" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="correo" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="estatus" Type="int" Nullable="false" />
+    <Property Name="idEmpleado" Type="int" />
+  </EntityType>
+  <Association Name="FK__almacenPr__idAlm__4AB81AF0">
+    <End Role="almacen" Type="Self.almacen" Multiplicity="1" />
+    <End Role="almacenProductos" Type="Self.almacenProductos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="almacen">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="almacenProductos">
+        <PropertyRef Name="idAlmacen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__almacenPr__idAlm__70DDC3D8">
+    <End Role="almacen" Type="Self.almacen" Multiplicity="1" />
+    <End Role="almacenProductos" Type="Self.almacenProductos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="almacen">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="almacenProductos">
+        <PropertyRef Name="idAlmacen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__almacenPr__idPro__4BAC3F29">
+    <End Role="productos" Type="Self.productos" Multiplicity="1" />
+    <End Role="almacenProductos" Type="Self.almacenProductos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="productos">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="almacenProductos">
+        <PropertyRef Name="idProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__almacenPr__idPro__71D1E811">
+    <End Role="productos" Type="Self.productos" Multiplicity="1" />
+    <End Role="almacenProductos" Type="Self.almacenProductos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="productos">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="almacenProductos">
+        <PropertyRef Name="idProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__calendari__idDes__4D94879B">
+    <End Role="descuentos" Type="Self.descuentos" Multiplicity="1" />
+    <End Role="calendarios" Type="Self.calendarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="descuentos">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="calendarios">
+        <PropertyRef Name="idDescuento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__calendari__idDes__73BA3083">
+    <End Role="descuentos" Type="Self.descuentos" Multiplicity="1" />
+    <End Role="calendarios" Type="Self.calendarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="descuentos">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="calendarios">
+        <PropertyRef Name="idDescuento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__calendari__idTip__4CA06362">
+    <End Role="tiposDescuentos" Type="Self.tiposDescuentos" Multiplicity="1" />
+    <End Role="calendarios" Type="Self.calendarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tiposDescuentos">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="calendarios">
+        <PropertyRef Name="idTipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__calendari__idTip__72C60C4A">
+    <End Role="tiposDescuentos" Type="Self.tiposDescuentos" Multiplicity="1" />
+    <End Role="calendarios" Type="Self.calendarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tiposDescuentos">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="calendarios">
+        <PropertyRef Name="idTipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__clientes__idTipo__4E88ABD4">
+    <End Role="tiposClientes" Type="Self.tiposClientes" Multiplicity="1" />
+    <End Role="clientes" Type="Self.clientes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tiposClientes">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="clientes">
+        <PropertyRef Name="idTipoCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__clientes__idTipo__74AE54BC">
+    <End Role="tiposClientes" Type="Self.tiposClientes" Multiplicity="1" />
+    <End Role="clientes" Type="Self.clientes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tiposClientes">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="clientes">
+        <PropertyRef Name="idTipoCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__empleados__idPue__4F7CD00D">
+    <End Role="puesto" Type="Self.puesto" Multiplicity="1" />
+    <End Role="empleados" Type="Self.empleados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="puesto">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="empleados">
+        <PropertyRef Name="idPuesto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__empleados__idPue__75A278F5">
+    <End Role="puesto" Type="Self.puesto" Multiplicity="1" />
+    <End Role="empleados" Type="Self.empleados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="puesto">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="empleados">
+        <PropertyRef Name="idPuesto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__productos__idMar__5070F446">
+    <End Role="marcasProd" Type="Self.marcasProd" Multiplicity="1" />
+    <End Role="productos" Type="Self.productos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="marcasProd">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="productos">
+        <PropertyRef Name="idMarca" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__productos__idMar__76969D2E">
+    <End Role="marcasProd" Type="Self.marcasProd" Multiplicity="1" />
+    <End Role="productos" Type="Self.productos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="marcasProd">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="productos">
+        <PropertyRef Name="idMarca" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__productos__idTip__52593CB8">
+    <End Role="tiposProductos" Type="Self.tiposProductos" Multiplicity="1" />
+    <End Role="productos" Type="Self.productos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tiposProductos">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="productos">
+        <PropertyRef Name="idTipoProd" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__productos__idTip__787EE5A0">
+    <End Role="tiposProductos" Type="Self.tiposProductos" Multiplicity="1" />
+    <End Role="productos" Type="Self.productos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tiposProductos">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="productos">
+        <PropertyRef Name="idTipoProd" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__productos__idUM__5165187F">
+    <End Role="unidadesMedida" Type="Self.unidadesMedida" Multiplicity="1" />
+    <End Role="productos" Type="Self.productos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="unidadesMedida">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="productos">
+        <PropertyRef Name="idUM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__productos__idUM__778AC167">
+    <End Role="unidadesMedida" Type="Self.unidadesMedida" Multiplicity="1" />
+    <End Role="productos" Type="Self.productos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="unidadesMedida">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="productos">
+        <PropertyRef Name="idUM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__rentaDeta__idPro__534D60F1">
+    <End Role="productos" Type="Self.productos" Multiplicity="1" />
+    <End Role="rentaDetalle" Type="Self.rentaDetalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="productos">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="rentaDetalle">
+        <PropertyRef Name="idProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__rentaDeta__idPro__797309D9">
+    <End Role="productos" Type="Self.productos" Multiplicity="1" />
+    <End Role="rentaDetalle" Type="Self.rentaDetalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="productos">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="rentaDetalle">
+        <PropertyRef Name="idProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__rentaDeta__idRen__5441852A">
+    <End Role="rentas" Type="Self.rentas" Multiplicity="1" />
+    <End Role="rentaDetalle" Type="Self.rentaDetalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="rentas">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="rentaDetalle">
+        <PropertyRef Name="idRenta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__rentaDeta__idRen__7A672E12">
+    <End Role="rentas" Type="Self.rentas" Multiplicity="1" />
+    <End Role="rentaDetalle" Type="Self.rentaDetalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="rentas">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="rentaDetalle">
+        <PropertyRef Name="idRenta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__rolesUsua__idMod__00200768">
+    <End Role="modulos" Type="Self.modulos" Multiplicity="1" />
+    <End Role="rolesUsuarioModulo" Type="Self.rolesUsuarioModulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="modulos">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="rolesUsuarioModulo">
+        <PropertyRef Name="idModulo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__rolesUsua__idMod__59FA5E80">
+    <End Role="modulos" Type="Self.modulos" Multiplicity="1" />
+    <End Role="rolesUsuarioModulo" Type="Self.rolesUsuarioModulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="modulos">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="rolesUsuarioModulo">
+        <PropertyRef Name="idModulo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__rolesUsua__idRol__59063A47">
+    <End Role="roles" Type="Self.roles" Multiplicity="1" />
+    <End Role="rolesUsuarioModulo" Type="Self.rolesUsuarioModulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="roles">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="rolesUsuarioModulo">
+        <PropertyRef Name="idRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__rolesUsua__idRol__7F2BE32F">
+    <End Role="roles" Type="Self.roles" Multiplicity="1" />
+    <End Role="rolesUsuarioModulo" Type="Self.rolesUsuarioModulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="roles">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="rolesUsuarioModulo">
+        <PropertyRef Name="idRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__rolesUsua__idUsu__01142BA1">
+    <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+    <End Role="rolesUsuarioModulo" Type="Self.rolesUsuarioModulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuarios">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="rolesUsuarioModulo">
+        <PropertyRef Name="idUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__rolesUsua__idUsu__5AEE82B9">
+    <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+    <End Role="rolesUsuarioModulo" Type="Self.rolesUsuarioModulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuarios">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="rolesUsuarioModulo">
+        <PropertyRef Name="idUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__usuarios__idEmpl__02084FDA">
+    <End Role="empleados" Type="Self.empleados" Multiplicity="0..1" />
+    <End Role="usuarios" Type="Self.usuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="empleados">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="usuarios">
+        <PropertyRef Name="idEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__usuarios__idEmpl__5BE2A6F2">
+    <End Role="empleados" Type="Self.empleados" Multiplicity="0..1" />
+    <End Role="usuarios" Type="Self.usuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="empleados">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="usuarios">
+        <PropertyRef Name="idEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="RentaCamionesModelStoreContainer">
+    <EntitySet Name="almacen" EntityType="Self.almacen" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="almacenProductos" EntityType="Self.almacenProductos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="calendarios" EntityType="Self.calendarios" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="clientes" EntityType="Self.clientes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="descuentos" EntityType="Self.descuentos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="empleados" EntityType="Self.empleados" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="estatusRenta" EntityType="Self.estatusRenta" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="facturas" EntityType="Self.facturas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="marcasProd" EntityType="Self.marcasProd" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="modulos" EntityType="Self.modulos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="productos" EntityType="Self.productos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="puesto" EntityType="Self.puesto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="rentaDetalle" EntityType="Self.rentaDetalle" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="rentas" EntityType="Self.rentas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="roles" EntityType="Self.roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="rolesUsuarioModulo" EntityType="Self.rolesUsuarioModulo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tiposClientes" EntityType="Self.tiposClientes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tiposDescuentos" EntityType="Self.tiposDescuentos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tiposProductos" EntityType="Self.tiposProductos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="unidadesMedida" EntityType="Self.unidadesMedida" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="usuarios" EntityType="Self.usuarios" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__almacenPr__idAlm__4AB81AF0" Association="Self.FK__almacenPr__idAlm__4AB81AF0">
+      <End Role="almacen" EntitySet="almacen" />
+      <End Role="almacenProductos" EntitySet="almacenProductos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__almacenPr__idAlm__70DDC3D8" Association="Self.FK__almacenPr__idAlm__70DDC3D8">
+      <End Role="almacen" EntitySet="almacen" />
+      <End Role="almacenProductos" EntitySet="almacenProductos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__almacenPr__idPro__4BAC3F29" Association="Self.FK__almacenPr__idPro__4BAC3F29">
+      <End Role="productos" EntitySet="productos" />
+      <End Role="almacenProductos" EntitySet="almacenProductos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__almacenPr__idPro__71D1E811" Association="Self.FK__almacenPr__idPro__71D1E811">
+      <End Role="productos" EntitySet="productos" />
+      <End Role="almacenProductos" EntitySet="almacenProductos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__calendari__idDes__4D94879B" Association="Self.FK__calendari__idDes__4D94879B">
+      <End Role="descuentos" EntitySet="descuentos" />
+      <End Role="calendarios" EntitySet="calendarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK__calendari__idDes__73BA3083" Association="Self.FK__calendari__idDes__73BA3083">
+      <End Role="descuentos" EntitySet="descuentos" />
+      <End Role="calendarios" EntitySet="calendarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK__calendari__idTip__4CA06362" Association="Self.FK__calendari__idTip__4CA06362">
+      <End Role="tiposDescuentos" EntitySet="tiposDescuentos" />
+      <End Role="calendarios" EntitySet="calendarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK__calendari__idTip__72C60C4A" Association="Self.FK__calendari__idTip__72C60C4A">
+      <End Role="tiposDescuentos" EntitySet="tiposDescuentos" />
+      <End Role="calendarios" EntitySet="calendarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK__clientes__idTipo__4E88ABD4" Association="Self.FK__clientes__idTipo__4E88ABD4">
+      <End Role="tiposClientes" EntitySet="tiposClientes" />
+      <End Role="clientes" EntitySet="clientes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__clientes__idTipo__74AE54BC" Association="Self.FK__clientes__idTipo__74AE54BC">
+      <End Role="tiposClientes" EntitySet="tiposClientes" />
+      <End Role="clientes" EntitySet="clientes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__empleados__idPue__4F7CD00D" Association="Self.FK__empleados__idPue__4F7CD00D">
+      <End Role="puesto" EntitySet="puesto" />
+      <End Role="empleados" EntitySet="empleados" />
+    </AssociationSet>
+    <AssociationSet Name="FK__empleados__idPue__75A278F5" Association="Self.FK__empleados__idPue__75A278F5">
+      <End Role="puesto" EntitySet="puesto" />
+      <End Role="empleados" EntitySet="empleados" />
+    </AssociationSet>
+    <AssociationSet Name="FK__productos__idMar__5070F446" Association="Self.FK__productos__idMar__5070F446">
+      <End Role="marcasProd" EntitySet="marcasProd" />
+      <End Role="productos" EntitySet="productos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__productos__idMar__76969D2E" Association="Self.FK__productos__idMar__76969D2E">
+      <End Role="marcasProd" EntitySet="marcasProd" />
+      <End Role="productos" EntitySet="productos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__productos__idTip__52593CB8" Association="Self.FK__productos__idTip__52593CB8">
+      <End Role="tiposProductos" EntitySet="tiposProductos" />
+      <End Role="productos" EntitySet="productos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__productos__idTip__787EE5A0" Association="Self.FK__productos__idTip__787EE5A0">
+      <End Role="tiposProductos" EntitySet="tiposProductos" />
+      <End Role="productos" EntitySet="productos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__productos__idUM__5165187F" Association="Self.FK__productos__idUM__5165187F">
+      <End Role="unidadesMedida" EntitySet="unidadesMedida" />
+      <End Role="productos" EntitySet="productos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__productos__idUM__778AC167" Association="Self.FK__productos__idUM__778AC167">
+      <End Role="unidadesMedida" EntitySet="unidadesMedida" />
+      <End Role="productos" EntitySet="productos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__rentaDeta__idPro__534D60F1" Association="Self.FK__rentaDeta__idPro__534D60F1">
+      <End Role="productos" EntitySet="productos" />
+      <End Role="rentaDetalle" EntitySet="rentaDetalle" />
+    </AssociationSet>
+    <AssociationSet Name="FK__rentaDeta__idPro__797309D9" Association="Self.FK__rentaDeta__idPro__797309D9">
+      <End Role="productos" EntitySet="productos" />
+      <End Role="rentaDetalle" EntitySet="rentaDetalle" />
+    </AssociationSet>
+    <AssociationSet Name="FK__rentaDeta__idRen__5441852A" Association="Self.FK__rentaDeta__idRen__5441852A">
+      <End Role="rentas" EntitySet="rentas" />
+      <End Role="rentaDetalle" EntitySet="rentaDetalle" />
+    </AssociationSet>
+    <AssociationSet Name="FK__rentaDeta__idRen__7A672E12" Association="Self.FK__rentaDeta__idRen__7A672E12">
+      <End Role="rentas" EntitySet="rentas" />
+      <End Role="rentaDetalle" EntitySet="rentaDetalle" />
+    </AssociationSet>
+    <AssociationSet Name="FK__rolesUsua__idMod__00200768" Association="Self.FK__rolesUsua__idMod__00200768">
+      <End Role="modulos" EntitySet="modulos" />
+      <End Role="rolesUsuarioModulo" EntitySet="rolesUsuarioModulo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__rolesUsua__idMod__59FA5E80" Association="Self.FK__rolesUsua__idMod__59FA5E80">
+      <End Role="modulos" EntitySet="modulos" />
+      <End Role="rolesUsuarioModulo" EntitySet="rolesUsuarioModulo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__rolesUsua__idRol__59063A47" Association="Self.FK__rolesUsua__idRol__59063A47">
+      <End Role="roles" EntitySet="roles" />
+      <End Role="rolesUsuarioModulo" EntitySet="rolesUsuarioModulo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__rolesUsua__idRol__7F2BE32F" Association="Self.FK__rolesUsua__idRol__7F2BE32F">
+      <End Role="roles" EntitySet="roles" />
+      <End Role="rolesUsuarioModulo" EntitySet="rolesUsuarioModulo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__rolesUsua__idUsu__01142BA1" Association="Self.FK__rolesUsua__idUsu__01142BA1">
+      <End Role="usuarios" EntitySet="usuarios" />
+      <End Role="rolesUsuarioModulo" EntitySet="rolesUsuarioModulo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__rolesUsua__idUsu__5AEE82B9" Association="Self.FK__rolesUsua__idUsu__5AEE82B9">
+      <End Role="usuarios" EntitySet="usuarios" />
+      <End Role="rolesUsuarioModulo" EntitySet="rolesUsuarioModulo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__usuarios__idEmpl__02084FDA" Association="Self.FK__usuarios__idEmpl__02084FDA">
+      <End Role="empleados" EntitySet="empleados" />
+      <End Role="usuarios" EntitySet="usuarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK__usuarios__idEmpl__5BE2A6F2" Association="Self.FK__usuarios__idEmpl__5BE2A6F2">
+      <End Role="empleados" EntitySet="empleados" />
+      <End Role="usuarios" EntitySet="usuarios" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
