@@ -212,6 +212,7 @@ namespace masterDetailV2._1.Controllers
                 marca = e.productos.marcasProd.nombre,
                 entregado = e.entregado,
                 cantidad = e.cantidad,
+                ds_entregado = e.entregado == 1 ? "Si" : "No"
 
             }).Where(x => x.idRenta == idRenta).ToList();
 

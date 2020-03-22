@@ -142,7 +142,7 @@
                             "<td>" + producto.cantidad + "</td>" +
                             "<td>" + producto.unidadMedida + "</td>" +
                             "<td>" + producto.categoria + "</td>" +
-                            "<td>" + producto.entregado + "</td>" +
+                            "<td>" + producto.ds_entregado + "</td>" +
                             "<td>" + "</td>" +
                             "</tr>";
                         } else {
@@ -157,7 +157,7 @@
                             "<td>" + producto.cantidad + "</td>" +
                             "<td>" + producto.unidadMedida + "</td>" +
                             "<td>" + producto.categoria + "</td>" +
-                            "<td>" + producto.entregado + "</td>" +
+                            "<td>" + producto.ds_entregado + "</td>" +
                             "<td>" + "<a href='#' class='btn btn-primary' onclick='recibirProducto(" + producto.id +"," +idRenta + ")' >Recibir</a>" + "</td>" +
                             "</tr>";
                         }
@@ -192,7 +192,7 @@
             text: "El producto se recepcionara actualizara el estatus de entregado",
             type: "warning",
             showCancelButton: true,
-            confirmButtonClass: "btn-danger",
+            confirmButtonClass: "btn-primary",
             confirmButtonText: "Sí",
             cancelButtonText: "No",
             closeOnConfirm: false,
