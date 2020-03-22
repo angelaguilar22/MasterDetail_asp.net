@@ -29,8 +29,10 @@ namespace masterDetailV2._1.Models
         [DataType(DataType.Date)]
         public System.DateTime fechaModificacion { get; set; }
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public System.DateTime fechaRenta { get; set; }
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public System.DateTime fechaVence { get; set; }
         public decimal subtotal { get; set; }
         public decimal total { get; set; }

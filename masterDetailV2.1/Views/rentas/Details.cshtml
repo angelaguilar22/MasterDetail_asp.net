@@ -34,13 +34,13 @@
 
         <div class="col-md-4" style="margin-bottom: 15px">
             <label class="control-label">Fecha de renta</label>
-            @Html.EditorFor(model => model.fechaRenta, new { htmlAttributes = new { @id = "rentaFechaRenta", @class = "form-control", @placeholder = "Fecha de renta", @ReadOnly = "true" } })
+            @Html.TextBoxFor(model => model.fechaRenta, "{0:yyyy-MM-dd}", new { @id = "rentaFechaRenta", @class = "form-control", @placeholder = "Fecha de renta", @ReadOnly = "true",@type = "date" } )
             @Html.ValidationMessageFor(model => model.fechaRenta, "", new { @class = "text-danger" })
         </div>
 
         <div class="col-md-4" style="margin-bottom: 15px">
             <label class="control-label">Fecha de vencimineto</label>
-            @Html.EditorFor(model => model.fechaVence, new { htmlAttributes = new { @id = "rentaFechaVence", @class = "form-control", @placeholder = "Fecha de vencimiento", @ReadOnly = "true" } })
+            @Html.TextBoxFor(model => model.fechaVence, "{0:yyyy-MM-dd}", new { @id = "rentaFechaVence", @class = "form-control", @placeholder = "Fecha de vencimiento", @ReadOnly = "true" } )
             @Html.ValidationMessageFor(model => model.fechaVence, "", new { @class = "text-danger" })
         </div>
 
