@@ -23,8 +23,7 @@
     <h2>Rentas</h2>
 
     <div>
-        @using (Html.BeginForm())
-        {
+        
             @Html.AntiForgeryToken()
 
             <div class="form-horizontal">
@@ -35,68 +34,58 @@
                 <div class="col-md-12">
                     <div class="col-md-3">
                         @Html.LabelFor(model => model.renta.folio, htmlAttributes: new { @class = "control-label col-md-2" })
-                        @Html.EditorFor(model => model.renta.folio, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.renta.folio, new { htmlAttributes = new { @id = "rentaFolio", @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.renta.folio, "", new { @class = "text-danger" })
                     </div>
 
                     <div class="col-md-3">
-                        @Html.LabelFor(model => model.renta.fechaCreacion, htmlAttributes: new { @class = "control-label col-md-2" })
-                        @Html.EditorFor(model => model.renta.fechaCreacion, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.renta.fechaCreacion, "", new { @class = "text-danger" })
-                    </div>
-
-
-                    <div class="col-md-3">
-                        @Html.LabelFor(model => model.renta.fechaModificacion, htmlAttributes: new { @class = "control-label col-md-2" })
-                        @Html.EditorFor(model => model.renta.fechaModificacion, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.renta.fechaModificacion, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-
-                <div class="col-md-12">
-                    <div class="col-md-3">
-                        @Html.LabelFor(model => model.renta.fechaRenta, htmlAttributes: new { @class = "control-label col-md-2" })
-                        @Html.EditorFor(model => model.renta.fechaRenta, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.LabelFor(model => model.renta.fechaRenta, htmlAttributes: new {  @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.renta.fechaRenta, new { htmlAttributes = new { @id = "rentaFechaRenta", @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.renta.fechaRenta, "", new { @class = "text-danger" })
                     </div>
 
                     <div class="col-md-3">
                         @Html.LabelFor(model => model.renta.fechaVence, htmlAttributes: new { @class = "control-label col-md-2" })
-                        @Html.EditorFor(model => model.renta.fechaVence, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.renta.fechaVence, new { htmlAttributes = new { @id = "rentaFechaVence", @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.renta.fechaVence, "", new { @class = "text-danger" })
                     </div>
 
-                    <div class="col-md-3">
-                        @Html.LabelFor(model => model.renta.subtotal, htmlAttributes: new { @class = "control-label col-md-2" })
-                        @Html.EditorFor(model => model.renta.subtotal, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.renta.subtotal, "", new { @class = "text-danger" })
-                    </div>
                 </div>
 
 
                 <div class="col-md-12">
                     <div class="col-md-3">
                         @Html.LabelFor(model => model.renta.total, htmlAttributes: new { @class = "control-label col-md-2" })
-                        @Html.EditorFor(model => model.renta.total, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.renta.total, new { htmlAttributes = new { @id = "rentaMontoTotal", @class = "form-control", @ReadOnly = "true" } })
                         @Html.ValidationMessageFor(model => model.renta.total, "", new { @class = "text-danger" })
                     </div>
 
                     <div class="col-md-3">
                         @Html.LabelFor(model => model.renta.cantidadTotalProd, htmlAttributes: new { @class = "control-label col-md-2" })
-                        @Html.EditorFor(model => model.renta.cantidadTotalProd, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.renta.cantidadTotalProd, new { htmlAttributes = new { @id = "rentaProductosTotales", @class = "form-control", @ReadOnly = "true" } })
                         @Html.ValidationMessageFor(model => model.renta.cantidadTotalProd, "", new { @class = "text-danger" })
                     </div>
 
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model.renta.subtotal, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.renta.subtotal, new { htmlAttributes = new { @id = "rentaSubtotal", @class = "form-control", @ReadOnly = "true" } })
+                        @Html.ValidationMessageFor(model => model.renta.subtotal, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="col-md-12">
+                    
                     <div class="col-md-3" style="margin-top: 28px">
-                        <input type="submit" value="Create" class="btn btn-default" />
+                        <input type="submit" value="Create" class="btn btn-default" />-->
+                        <button class="btn btn-primary" id="saveRenta">Guardar</button>
                     </div>
 
                 </div>
 
 
             </div>
-        }
+     
     </div>
 
 
@@ -161,18 +150,18 @@
 
                         <div class="form-group">
                             <label class="control-label col-md-2">Descpción</label>
-                            @Html.TextBoxFor(m => m.producto.descripcion, new { @id = "prodDescripcion", @class = "form-control", @placeholder = "Descripcion" })
+                            @Html.TextBoxFor(m => m.producto.descripcion, new { @id = "prodDescripcion", @class = "form-control", @placeholder = "Descripcion", @ReadOnly = "true" })
                         </div>
 
                         <div class="form-group">
                             <label class="control-label col-md-2">Numero de Serie</label>
-                            @Html.TextBoxFor(m => m.producto.numeroSerie, new { @id = "prodNmSerie", @class = "form-control", @placeholder = "Numero de Serie" })
+                            @Html.TextBoxFor(m => m.producto.numeroSerie, new { @id = "prodNmSerie", @class = "form-control", @placeholder = "Numero de Serie", @ReadOnly = "true" })
                         </div>
 
 
                         <div class="form-group">
                             <label class="control-label col-md-2">Precio</label>
-                            @Html.TextBoxFor(m => m.producto.precioUnitario, new { @type = "number", @id = "prodPrecio", @class = "form-control", @placeholder = "Precio Unitario" })
+                            @Html.TextBoxFor(m => m.producto.precioUnitario, new { @type = "number", @id = "prodPrecio", @class = "form-control", @placeholder = "Precio Unitario", @ReadOnly = "true" })
                         </div>
 
 
@@ -204,11 +193,12 @@
 <script type="text/javascript">
     // Funcion ejecutada cuando esta listo el HTML
     $(document).ready(function () {
-        swal("You select NO! Please select again!!", "", "warning");
+        //swal("You select NO! Please select again!!", "", "warning");
     });
 
     // Listado de productos
     var listadoProductos = [];
+    var actionButton = 0;
 
     //$("#loadingStatus").html("Cargando");
 
@@ -246,9 +236,13 @@
 
     // Funcion pra mostrar el popup de add producto
     function addProducto(StudentId) {
+        // Set accion a realizar en el formulario
+        actionButton = 1;
+
+        // Reseteamos las variiables del FORMULARIO 
         $("#form")[0].reset();
-        $("#StuId").val(0);
-        $("#DropDwn option:selected").text("--Select Dept--");
+
+        // Datos del componente del fomulario 
         $("#ModalTitle").html("Agregar Producto");
         $("#MyModal").modal();
     }
@@ -259,40 +253,84 @@
         // Variable que obtiene la data del FORMULARIO
         var data1 = $("#SubmitForm").serializeArray();
 
-        // Creamos la estructura del objeto PRODUCTO
-        let producto = {
-            id: data1[0].value,
-            nombre: data1[1].value,
-            descripcion: data1[3].value,
-            estadoFisico: data1[10].value,
-            precioUnitario: data1[5].value,
-            unidadMedida: data1[9].value,
-            numeroSerie: data1[4].value,
-            categoria: data1[7].value,
-            marca: data1[8].value,
-            cantidad: parseInt(data1[6].value),
-            subtotal: (parseFloat(data1[5].value) * parseFloat(data1[6].value))
-        };
-        console.log(data1);
+        // Validadion para ver que accion se realizara dentro del formulario. 1.- Agregar, 2.- Edicion
+        if (actionButton == 1) {
+            console.log('furmulario de agregacion');
 
-        // Verificamos si el producto ya esta en la RENTA
-        let productExistRenta = listadoProductos.find(item => item.id == producto.id);
+            // Creamos la estructura del objeto PRODUCTO
+            let producto = {
+                id: data1[0].value,
+                nombre: data1[1].value,
+                descripcion: data1[3].value,
+                estadoFisico: data1[10].value,
+                precioUnitario: data1[5].value,
+                unidadMedida: data1[9].value,
+                numeroSerie: data1[4].value,
+                categoria: data1[7].value,
+                marca: data1[8].value,
+                cantidad: parseInt(data1[6].value),
+                subtotal: (parseFloat(data1[5].value) * parseFloat(data1[6].value))
+            };
+            console.log(data1);
 
-        // Validamos si lo agregamos a la RENTA o solo agregamos la cantidad
-        if (productExistRenta == undefined) {
-            // Agregamos el objeto PRODUCTO a LISTADO DE PRODUCTOS
-            listadoProductos.push(producto);
+            // Verificamos si el producto ya esta en la RENTA
+            let productExistRenta = listadoProductos.find(item => item.id == producto.id);
 
-        } else {
-            // Actualizamos la cantidad
-            productExistRenta.cantidad = productExistRenta.cantidad + producto.cantidad;
-            // Actualizamos el subtotal del producto
-            productExistRenta.subtotal = productExistRenta.subtotal + producto.subtotal;
+            // Validamos si lo agregamos a la RENTA o solo agregamos la cantidad
+            if (productExistRenta == undefined) {
+                // Agregamos el objeto PRODUCTO a LISTADO DE PRODUCTOS
+                listadoProductos.push(producto);
+            } else {
+                // Actualizamos la cantidad
+                productExistRenta.cantidad = productExistRenta.cantidad + producto.cantidad;
+                // Actualizamos el subtotal del producto
+                productExistRenta.subtotal = productExistRenta.subtotal + producto.subtotal;
+            }
+
+            console.log('llenar ');
+            // Init informacion de la grid
+            cargarGrid(listadoProductos);
+            // Calculamos el monto total de la RENTA
+            calcularMontRenta(listadoProductos);
+
+        } else if (actionButton == 2) {
+
+            // Creamos la estructura del objeto PRODUCTO
+            let producto = {
+                id: data1[0].value,
+                nombre: data1[1].value,
+                descripcion: data1[3].value,
+                estadoFisico: data1[10].value,
+                precioUnitario: data1[5].value,
+                unidadMedida: data1[9].value,
+                numeroSerie: data1[4].value,
+                categoria: data1[7].value,
+                marca: data1[8].value,
+                cantidad: parseInt(data1[6].value),
+                subtotal: (parseFloat(data1[5].value) * parseFloat(data1[6].value))
+            };
+
+            console.log(producto, 'Editar');
+
+            // Buscamos el PRODUTO dentro del listado
+            listadoProductos.forEach(item => {
+                if (item.id == producto.id) {
+                    // Sustituimos el PRODUCTO con el producto editado
+                    item.cantidad = producto.cantidad;
+                    item.subtotal = producto.subtotal;
+                    console.log(item, 'elementoo a editar');
+                }
+            });
+
+            // Init informacion de la grid (REFRESH INFORMACION)
+            cargarGrid(listadoProductos);
+
+            // Calculamos el monto total de la RENTA
+            calcularMontRenta(listadoProductos);
+
+            console.log('formulario de edicion ');
         }
 
-        console.log('llenar ');
-        // Init informacion de la grid
-        cargarGrid(listadoProductos);
 
         // Cerramos el modal cuendo se agrega el producto
         $("#MyModal").modal("hide");
@@ -302,18 +340,34 @@
 
     // Funcion para editar el PRODUCTO
     function editarProducto(idProducto) {
+        // Set accion a realizar en el formulario
+        actionButton = 2;
+
         let productoEdit = listadoProductos.find(item => item.id == idProducto);
 
         if (productoEdit == undefined) {
             console.log('ALGO ANDA MAL CAMARITA');
         } else {
-            console.log(productoEdit);
+
+            console.log(productoEdit, 'PRODUCTOS A EDITAR');
+            // Agregamos los valores del producto a el FORMULARIO
+            // Set value of producto
             $("#prodId").val(productoEdit.id);
+            $("#prodName").val(productoEdit.nombre);
+            $("#prodDescripcion").val(productoEdit.descripcion);
+            $("#prodNmSerie").val(productoEdit.numeroSerie);
+            $("#prodPrecio").val(productoEdit.precioUnitario);
+            $("#prodCategoria").val(productoEdit.categoria);
+            $("#prodMarca").val(productoEdit.marca);
+            $("#prodUM").val(productoEdit.unidadMedida);
+            $("#prodEstadoFisico").val(productoEdit.estadoFisico);
+            $("#prodCantidad").val(productoEdit.cantidad);
+
             $("#prodIdSelect option:selected").text(productoEdit.nombre);
             $("#prodIdSelect option:selected").val(productoEdit.id);
 
-            $("#ModalTitle").html("Agregar Producto");
-
+            // Datos del formulario para la EDITAR
+            $("#ModalTitle").html("Editar Producto");
             $("#MyModal").modal();
         }
     }
@@ -336,7 +390,7 @@
             //Mesaje de confirmación
             swal({
                 title: "Estas seguro de eliminar el producto?",
-                text: "El producto se eliminara de la renta en curso",
+                text: "El producto se eliminara de la renta en cursoq",
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonClass: "btn-danger",
@@ -350,8 +404,12 @@
                     // Eliminamos el PRODCUTO
                     listadoProductos.splice(productoEliminarIndex, 1);
 
-                    cargarGrid(listadoProductos);
                     // Refresh informacion de la GRID
+                    cargarGrid(listadoProductos);
+
+                    // Calculamos el monto total de la RENTA
+                    calcularMontRenta(listadoProductos);
+
                     console.log(listadoProductos, productoEliminarIndex);
 
                     // Mensaje de eliminado correctamneter
@@ -359,7 +417,7 @@
                 } else {
                     swal("Cancelado", "", "error");
                 }
-            });;
+            });
 
         }
     }
@@ -398,5 +456,62 @@
             });
         }
     }
+
+    // Funcion para calcular el MONTO TOTAL DE LA RENTA Y CANTIDAD DE PRODUCTOS RENTADOS
+    function calcularMontRenta(listadoProductos) {
+        let montoTotal = 0, productosTotales = 0;
+
+        // Iteracion para calcular el monto de la renta
+        listadoProductos.forEach(producto => {
+            // Calculamos el monto de la renta
+            montoTotal += producto.subtotal;
+        });
+
+        console.log(montoTotal, 'monto total de la renta');
+
+        // Seteamos los valores de MONTO TOTAL Y PRODUCTOS TOTALES A LA RENTA
+        $("#rentaMontoTotal").val(montoTotal);
+        $("#rentaSubtotal").val(montoTotal);
+        $("#rentaProductosTotales").val(listadoProductos.length);
+    }
+
+    // FUNCION PARA AGREGAR LA RENTA A BASE DE DATOS
+    function agregarRenta(renta) {
+        // Petion a backend para agregar la Recepcion a base de datos
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:50131/rentas/AgregarRenta",
+            data: renta,
+            //dataType: 'application/json',
+            success: function (response) {
+                console.log(response, 'Success');
+                // Redireccionamos la pagina a el index
+                window.location = "http://localhost:50131/rentas/index";
+            },
+            error: function (error) {
+                console.log('Algo salio mal camarita al guardar la renta', error);
+            }
+        });
+    }
+
+    // Funcion para GUARDAR LA RENTA
+    $("#saveRenta").click(() => {
+
+        // Creacion de la estrutura de la RENTA (ENCABEZADO, DETALLES)
+        let rentaEstructura = {
+            //id: 1,
+            folio: $("#rentaFolio").val(),
+            fechaCreacion: null,
+            fechaModificacion: null,
+            fechaRenta: $("#rentaFechaRenta").val(),
+            fechaVence: $("#rentaFechaVence").val(),
+            subtotal: $("#rentaSubtotal").val(),
+            total: $("#rentaMontoTotal").val(),
+            listadoProducto: listadoProductos
+        }
+        console.log(listadoProductos);
+        agregarRenta(rentaEstructura);
+    });
+
 
 </script>

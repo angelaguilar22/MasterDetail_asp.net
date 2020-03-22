@@ -1,0 +1,14 @@
+https://www.youtube.com/watch?v=khwgTZ_6EwU =>>>>> MASTER DETAIL VIDEO
+
+
+SWal Alert
+
+	https://sweetalert.js.org/guides/
+	https://sweetalert2.github.io/
+
+Swal alet con bootstrap
+	https://lipis.github.io/bootstrap-sweetalert/
+
+
+bootstrap 3.3.1
+	https://getbootstrap.com/docs/4.1/components/modal/
