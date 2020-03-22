@@ -63,6 +63,7 @@ C:\Users\angel\source\repos\masterDetailV2.1\masterDetailV2.1\bin\System.Web.Web
 C:\Users\angel\source\repos\masterDetailV2.1\masterDetailV2.1\bin\WebGrease.dll
 C:\Users\angel\source\repos\masterDetailV2.1\masterDetailV2.1\bin\EntityFramework.xml
 C:\Users\angel\source\repos\masterDetailV2.1\masterDetailV2.1\bin\EntityFramework.SqlServer.xml
+C:\Users\angel\source\repos\masterDetailV2.1\masterDetailV2.1\bin\Newtonsoft.Json.xml
 C:\Users\angel\source\repos\masterDetailV2.1\masterDetailV2.1\bin\System.Web.Helpers.xml
 C:\Users\angel\source\repos\masterDetailV2.1\masterDetailV2.1\bin\System.Web.Mvc.xml
 C:\Users\angel\source\repos\masterDetailV2.1\masterDetailV2.1\bin\System.Web.Optimization.xml
@@ -70,7 +71,6 @@ C:\Users\angel\source\repos\masterDetailV2.1\masterDetailV2.1\bin\System.Web.Raz
 C:\Users\angel\source\repos\masterDetailV2.1\masterDetailV2.1\bin\System.Web.WebPages.xml
 C:\Users\angel\source\repos\masterDetailV2.1\masterDetailV2.1\bin\System.Web.WebPages.Deployment.xml
 C:\Users\angel\source\repos\masterDetailV2.1\masterDetailV2.1\bin\System.Web.WebPages.Razor.xml
-C:\Users\angel\source\repos\masterDetailV2.1\masterDetailV2.1\bin\Newtonsoft.Json.xml
 C:\Users\angel\source\repos\masterDetailV2.1\masterDetailV2.1\bin\Antlr3.Runtime.pdb
 C:\Users\angel\source\repos\masterDetailV2.1\masterDetailV2.1\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\angel\source\repos\masterDetailV2.1\masterDetailV2.1\bin\es\System.Web.Helpers.resources.dll
@@ -80,10 +80,9 @@ C:\Users\angel\source\repos\masterDetailV2.1\masterDetailV2.1\bin\es\System.Web.
 C:\Users\angel\source\repos\masterDetailV2.1\masterDetailV2.1\bin\es\System.Web.WebPages.resources.dll
 C:\Users\angel\source\repos\masterDetailV2.1\masterDetailV2.1\bin\es\System.Web.WebPages.Deployment.resources.dll
 C:\Users\angel\source\repos\masterDetailV2.1\masterDetailV2.1\bin\es\System.Web.WebPages.Razor.resources.dll
+C:\Users\angel\source\repos\masterDetailV2.1\masterDetailV2.1\obj\Debug\masterDetailV2._1.Properties.Resources.resources
+C:\Users\angel\source\repos\masterDetailV2.1\masterDetailV2.1\obj\Debug\masterDetailV2.1.csproj.GenerateResource.cache
 C:\Users\angel\source\repos\masterDetailV2.1\masterDetailV2.1\obj\Debug\masterDetailV2.1.csproj.CoreCompileInputs.cache
 C:\Users\angel\source\repos\masterDetailV2.1\masterDetailV2.1\obj\Debug\masterDetailV2.1.csproj.CopyComplete
 C:\Users\angel\source\repos\masterDetailV2.1\masterDetailV2.1\obj\Debug\masterDetailV2.1.dll
 C:\Users\angel\source\repos\masterDetailV2.1\masterDetailV2.1\obj\Debug\masterDetailV2.1.pdb
-C:\Users\angel\source\repos\masterDetailV2.1\masterDetailV2.1\obj\Debug\masterDetailV2.1.csprojAssemblyReference.cache
-C:\Users\angel\source\repos\masterDetailV2.1\masterDetailV2.1\obj\Debug\masterDetailV2._1.Properties.Resources.resources
-C:\Users\angel\source\repos\masterDetailV2.1\masterDetailV2.1\obj\Debug\masterDetailV2.1.csproj.GenerateResource.cache

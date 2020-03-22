@@ -23,39 +23,42 @@
 
 
 <div class="">
-    <h2>Rentas</h2>
 
-    <div>
-
+    <div class="form-horizontal">
         @Html.AntiForgeryToken()
 
-        <div class="form-horizontal">
+            <div class="col-md-12" >
+                <div class="col-md-12">
+                    <h2>Rentas</h2>
+                </div>
+            </div>
+
             <hr />
+
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
             <div class="col-md-12">
-                <div class="col-md-12" style="margin-top: 28px">
+                <div class="col-md-12" style="margin-top: 20px">
                     <!--<input type="submit" value="Create" class="btn btn-default" />-->
                     <button class="btn btn-primary" style="float: right; margin-bottom: 20px" id="saveRenta">Guardar</button>
                 </div>
             </div>
             <br />
-            <br />
 
             <div class="col-md-12">
-                <div class="col-md-4">
+                <div class="col-md-4" style="margin-bottom: 15px">
                     <label class="control-label">Folio de renta</label>
                     @Html.EditorFor(model => model.renta.folio, new { htmlAttributes = new { @id = "rentaFolio", @class = "form-control", @placeholder = "Folio de renta" } })
                     @Html.ValidationMessageFor(model => model.renta.folio, "", new { @class = "text-danger" })
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-4" style="margin-bottom: 15px">
                     <label class="control-label">Fecha de renta</label>
                     @Html.EditorFor(model => model.renta.fechaRenta, new { htmlAttributes = new { @id = "rentaFechaRenta", @class = "form-control", @placeholder = "Fecha de renta" } })
                     @Html.ValidationMessageFor(model => model.renta.fechaRenta, "", new { @class = "text-danger" })
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-4" style="margin-bottom: 15px">
                     <label class="control-label">Fecha de vencimineto</label>
                     @Html.EditorFor(model => model.renta.fechaVence, new { htmlAttributes = new { @id = "rentaFechaVence", @class = "form-control", @placeholder = "Fecha de vencimiento" } })
                     @Html.ValidationMessageFor(model => model.renta.fechaVence, "", new { @class = "text-danger" })
@@ -86,41 +89,39 @@
 
         </div>
 
-    </div>
+        <div class="col-md-12">
+            <div class="col-md-12" style="margin-top: 0px;">
+                <a href="#" class="btn btn-primary" onclick="addProducto(0)" style="margin-top: 30px; float: right"><span class='glyphicon glyphicon-plus'></span></a>
 
-    <div class="col-md-12">
-        <div class="col-md-12" style="margin-top: 0px;">
-        <a href="#" class="btn btn-primary" onclick="addProducto(0)" style="margin-top: 30px; float: right"><span class='glyphicon glyphicon-plus'></span></a>
+                <table class="table table-striped" style="margin-top: 20px">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Descripción</th>
+                            <th>Marca</th>
+                            <th>Numero de Serie</th>
+                            <th>Estado Fisico</th>
+                            <th>Precio Unitario</th>
+                            <th>Cantidad</th>
+                            <th>Unidad de Medida</th>
+                            <th>Categoria</th>
+                            <th>Subtotal</th>
+                        </tr>
 
-        <table class="table table-striped" style="margin-top: 20px">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Descripción</th>
-                    <th>Marca</th>
-                    <th>Numero de Serie</th>
-                    <th>Estado Fisico</th>
-                    <th>Precio Unitario</th>
-                    <th>Cantidad</th>
-                    <th>Unidad de Medida</th>
-                    <th>Categoria</th>
-                    <th>Subtotal</th>
-                </tr>
+                    </thead>
+                    <tbody id="produtosList">
+                        <!--     inicio de seccion de listado de PRODUCTOS -->
+                        <tr id="loadingStatus"></tr>
+                    </tbody>
+                </table>
+            </div>
 
-            </thead>
-            <tbody id="produtosList">
-                <!--     inicio de seccion de listado de PRODUCTOS -->
-                <tr id="loadingStatus"></tr>
-            </tbody>
-        </table>
-    </div>
-   
-        <div class="col-md-12" style="margin-top: 10%">
-            @Html.ActionLink("Back to List", "Index")
+            <div class="col-md-12" style="margin-top: 10%; margin-bottom: 15px">
+                @Html.ActionLink("Regresar al listado", "Index")
+            </div>
         </div>
-    </div>
 
-</div>
+    </div>
 
 <!-- SECCION DE MODAL PARA AGREGAR PRODUCTO -->
 @*Create A Popup Modal With Registration Form For Add Or Edit Student Record*@
