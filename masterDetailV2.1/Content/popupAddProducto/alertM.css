@@ -1,0 +1,17 @@
+﻿form label {
+    display: inline-block;
+    width: 100px;
+}
+
+form div {
+    margin-bottom: 10px;
+}
+
+.error {
+    color: #a94442;
+    margin-left: 17%;
+}
+
+label.error {
+    display: inline;
+}

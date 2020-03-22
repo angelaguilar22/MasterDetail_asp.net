@@ -10,10 +10,13 @@
 <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 <script src="~/Scripts/jquery.validate.min.js"></script>
 
-
 <!-- INICIO DE LINKS Y SCRIPTS DE SWAL ALERT-->
 <link href="~/Content/sweetalert.css" rel="stylesheet" />
 <script src="~/Scripts/sweetalert.min.js" type="text/javascript"></script>
+
+<!-- INICIO DE STYLOS PERSONALISADOS PAGE -->
+<link rel="stylesheet" href="~/Content/popupAddProducto/alertM.css" />
+
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
@@ -23,74 +26,71 @@
     <h2>Rentas</h2>
 
     <div>
-        
-            @Html.AntiForgeryToken()
 
-            <div class="form-horizontal">
-                <h4>rentas</h4>
-                <hr />
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.AntiForgeryToken()
 
-                <div class="col-md-12">
-                    <div class="col-md-3">
-                        @Html.LabelFor(model => model.renta.folio, htmlAttributes: new { @class = "control-label col-md-2" })
-                        @Html.EditorFor(model => model.renta.folio, new { htmlAttributes = new { @id = "rentaFolio", @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.renta.folio, "", new { @class = "text-danger" })
-                    </div>
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-                    <div class="col-md-3">
-                        @Html.LabelFor(model => model.renta.fechaRenta, htmlAttributes: new {  @class = "control-label col-md-2" })
-                        @Html.EditorFor(model => model.renta.fechaRenta, new { htmlAttributes = new { @id = "rentaFechaRenta", @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.renta.fechaRenta, "", new { @class = "text-danger" })
-                    </div>
+            <div class="col-md-12">
+                <div class="col-md-12" style="margin-top: 28px">
+                    <!--<input type="submit" value="Create" class="btn btn-default" />-->
+                    <button class="btn btn-primary" style="float: right; margin-bottom: 20px" id="saveRenta">Guardar</button>
+                </div>
+            </div>
+            <br />
+            <br />
 
-                    <div class="col-md-3">
-                        @Html.LabelFor(model => model.renta.fechaVence, htmlAttributes: new { @class = "control-label col-md-2" })
-                        @Html.EditorFor(model => model.renta.fechaVence, new { htmlAttributes = new { @id = "rentaFechaVence", @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.renta.fechaVence, "", new { @class = "text-danger" })
-                    </div>
-
+            <div class="col-md-12">
+                <div class="col-md-4">
+                    <label class="control-label">Folio de renta</label>
+                    @Html.EditorFor(model => model.renta.folio, new { htmlAttributes = new { @id = "rentaFolio", @class = "form-control", @placeholder = "Folio de renta" } })
+                    @Html.ValidationMessageFor(model => model.renta.folio, "", new { @class = "text-danger" })
                 </div>
 
-
-                <div class="col-md-12">
-                    <div class="col-md-3">
-                        @Html.LabelFor(model => model.renta.total, htmlAttributes: new { @class = "control-label col-md-2" })
-                        @Html.EditorFor(model => model.renta.total, new { htmlAttributes = new { @id = "rentaMontoTotal", @class = "form-control", @ReadOnly = "true" } })
-                        @Html.ValidationMessageFor(model => model.renta.total, "", new { @class = "text-danger" })
-                    </div>
-
-                    <div class="col-md-3">
-                        @Html.LabelFor(model => model.renta.cantidadTotalProd, htmlAttributes: new { @class = "control-label col-md-2" })
-                        @Html.EditorFor(model => model.renta.cantidadTotalProd, new { htmlAttributes = new { @id = "rentaProductosTotales", @class = "form-control", @ReadOnly = "true" } })
-                        @Html.ValidationMessageFor(model => model.renta.cantidadTotalProd, "", new { @class = "text-danger" })
-                    </div>
-
-                    <div class="col-md-3">
-                        @Html.LabelFor(model => model.renta.subtotal, htmlAttributes: new { @class = "control-label col-md-2" })
-                        @Html.EditorFor(model => model.renta.subtotal, new { htmlAttributes = new { @id = "rentaSubtotal", @class = "form-control", @ReadOnly = "true" } })
-                        @Html.ValidationMessageFor(model => model.renta.subtotal, "", new { @class = "text-danger" })
-                    </div>
+                <div class="col-md-4">
+                    <label class="control-label">Fecha de renta</label>
+                    @Html.EditorFor(model => model.renta.fechaRenta, new { htmlAttributes = new { @id = "rentaFechaRenta", @class = "form-control", @placeholder = "Fecha de renta" } })
+                    @Html.ValidationMessageFor(model => model.renta.fechaRenta, "", new { @class = "text-danger" })
                 </div>
 
-
-                <div class="col-md-12">
-                    
-                    <div class="col-md-3" style="margin-top: 28px">
-                        <input type="submit" value="Create" class="btn btn-default" />-->
-                        <button class="btn btn-primary" id="saveRenta">Guardar</button>
-                    </div>
-
+                <div class="col-md-4">
+                    <label class="control-label">Fecha de vencimineto</label>
+                    @Html.EditorFor(model => model.renta.fechaVence, new { htmlAttributes = new { @id = "rentaFechaVence", @class = "form-control", @placeholder = "Fecha de vencimiento" } })
+                    @Html.ValidationMessageFor(model => model.renta.fechaVence, "", new { @class = "text-danger" })
                 </div>
-
 
             </div>
-     
+
+
+            <div class="col-md-12">
+                <div class="col-md-4">
+                    <label class="control-label">Monto renta</label>
+                    @Html.EditorFor(model => model.renta.total, new { htmlAttributes = new { @id = "rentaMontoTotal", @class = "form-control", @ReadOnly = "true", @placeholder = "Monto renta" } })
+                    @Html.ValidationMessageFor(model => model.renta.total, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-md-4">
+                    <label class="control-label">Cantidad total productos</label>
+                    @Html.EditorFor(model => model.renta.cantidadTotalProd, new { htmlAttributes = new { @id = "rentaProductosTotales", @class = "form-control", @ReadOnly = "true", @placeholder = "Productos totales" } })
+                    @Html.ValidationMessageFor(model => model.renta.cantidadTotalProd, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-md-4">
+                    <label class="control-label">Subtotal</label>
+                    @Html.EditorFor(model => model.renta.subtotal, new { htmlAttributes = new { @id = "rentaSubtotal", @class = "form-control", @ReadOnly = "true", @placeholder = "Subtotal" } })
+                    @Html.ValidationMessageFor(model => model.renta.subtotal, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        </div>
+
     </div>
 
-
-    <div class="col-md-12" style="margin-top: 30px; padding-left: 15px; padding-right: 15px;">
-        <a href="#" class="btn btn-default" onclick="addProducto(0)" style="margin-top: 30px; float: right"><span class='glyphicon glyphicon-plus'></span></a>
+    <div class="col-md-12">
+        <div class="col-md-12" style="margin-top: 0px;">
+        <a href="#" class="btn btn-primary" onclick="addProducto(0)" style="margin-top: 30px; float: right"><span class='glyphicon glyphicon-plus'></span></a>
 
         <table class="table table-striped" style="margin-top: 20px">
             <thead>
@@ -114,10 +114,12 @@
             </tbody>
         </table>
     </div>
-
-    <div>
-        @Html.ActionLink("Back to List", "Index")
+   
+        <div class="col-md-12" style="margin-top: 10%">
+            @Html.ActionLink("Back to List", "Index")
+        </div>
     </div>
+
 </div>
 
 <!-- SECCION DE MODAL PARA AGREGAR PRODUCTO -->
@@ -167,7 +169,7 @@
 
                         <div class="form-group">
                             <label class="control-label col-md-2">Cantidad</label>
-                            @Html.TextBoxFor(m => m.producto.cantidad, new { @type = "number", @min = "0", @id = "prodCantidad", @class = "form-control", @placeholder = "Cantidad" })
+                            @Html.TextBoxFor(m => m.producto.cantidad, new { @type = "number", @min = "0",@name ="nombre", @id = "prodCantidad", @class = "form-control", @placeholder = "Cantidad" })
                         </div>
 
                         @Html.HiddenFor(m => m.producto.tiposProductos.nombre, new { @id = "prodCategoria" })
@@ -189,6 +191,8 @@
     </div>
 </div>
 
+<!-- Archivos javascript personalizados -->
+<script src="~/Scripts/popupAddProducto/onChangeEvents.js"></script>
 
 <script type="text/javascript">
     // Funcion ejecutada cuando esta listo el HTML
@@ -239,10 +243,14 @@
         // Set accion a realizar en el formulario
         actionButton = 1;
 
-        // Reseteamos las variiables del FORMULARIO 
+        // Reseteamos las variiables del FORMULARIO
+        deteleTagsErrors();
         $("#form")[0].reset();
+        // Variables reset
+        $("#prodIdSelect option:selected").text("-- Selecciona Producto --");
+        $("#prodId").val("");
 
-        // Datos del componente del fomulario 
+        // Datos del componente del fomulario
         $("#ModalTitle").html("Agregar Producto");
         $("#MyModal").modal();
     }
@@ -250,91 +258,96 @@
 
     // Funcion para agregar un PRODUCTO al listado
     $("#SaveStudentRecord").click(function () {
-        // Variable que obtiene la data del FORMULARIO
-        var data1 = $("#SubmitForm").serializeArray();
+        let isValidForm = validateFormulario();
+        console.log(isValidForm);
 
-        // Validadion para ver que accion se realizara dentro del formulario. 1.- Agregar, 2.- Edicion
-        if (actionButton == 1) {
-            console.log('furmulario de agregacion');
+        if (isValidForm) {
+            // Variable que obtiene la data del FORMULARIO
+            var data1 = $("#SubmitForm").serializeArray();
 
-            // Creamos la estructura del objeto PRODUCTO
-            let producto = {
-                id: data1[0].value,
-                nombre: data1[1].value,
-                descripcion: data1[3].value,
-                estadoFisico: data1[10].value,
-                precioUnitario: data1[5].value,
-                unidadMedida: data1[9].value,
-                numeroSerie: data1[4].value,
-                categoria: data1[7].value,
-                marca: data1[8].value,
-                cantidad: parseInt(data1[6].value),
-                subtotal: (parseFloat(data1[5].value) * parseFloat(data1[6].value))
-            };
-            console.log(data1);
+            // Validadion para ver que accion se realizara dentro del formulario. 1.- Agregar, 2.- Edicion
+            if (actionButton == 1) {
+                console.log('furmulario de agregacion');
 
-            // Verificamos si el producto ya esta en la RENTA
-            let productExistRenta = listadoProductos.find(item => item.id == producto.id);
+                // Creamos la estructura del objeto PRODUCTO
+                let producto = {
+                    id: data1[0].value,
+                    nombre: data1[1].value,
+                    descripcion: data1[3].value,
+                    estadoFisico: data1[10].value,
+                    precioUnitario: data1[5].value,
+                    unidadMedida: data1[9].value,
+                    numeroSerie: data1[4].value,
+                    categoria: data1[7].value,
+                    marca: data1[8].value,
+                    cantidad: parseInt(data1[6].value),
+                    subtotal: (parseFloat(data1[5].value) * parseFloat(data1[6].value))
+                };
+                console.log(data1);
 
-            // Validamos si lo agregamos a la RENTA o solo agregamos la cantidad
-            if (productExistRenta == undefined) {
-                // Agregamos el objeto PRODUCTO a LISTADO DE PRODUCTOS
-                listadoProductos.push(producto);
-            } else {
-                // Actualizamos la cantidad
-                productExistRenta.cantidad = productExistRenta.cantidad + producto.cantidad;
-                // Actualizamos el subtotal del producto
-                productExistRenta.subtotal = productExistRenta.subtotal + producto.subtotal;
+                // Verificamos si el producto ya esta en la RENTA
+                let productExistRenta = listadoProductos.find(item => item.id == producto.id);
+
+                // Validamos si lo agregamos a la RENTA o solo agregamos la cantidad
+                if (productExistRenta == undefined) {
+                    // Agregamos el objeto PRODUCTO a LISTADO DE PRODUCTOS
+                    listadoProductos.push(producto);
+                } else {
+                    // Actualizamos la cantidad
+                    productExistRenta.cantidad = productExistRenta.cantidad + producto.cantidad;
+                    // Actualizamos el subtotal del producto
+                    productExistRenta.subtotal = productExistRenta.subtotal + producto.subtotal;
+                }
+
+                console.log('llenar ');
+                // Init informacion de la grid
+                cargarGrid(listadoProductos);
+                // Calculamos el monto total de la RENTA
+                calcularMontRenta(listadoProductos);
+
+            } else if (actionButton == 2) {
+
+                // Creamos la estructura del objeto PRODUCTO
+                let producto = {
+                    id: data1[0].value,
+                    nombre: data1[1].value,
+                    descripcion: data1[3].value,
+                    estadoFisico: data1[10].value,
+                    precioUnitario: data1[5].value,
+                    unidadMedida: data1[9].value,
+                    numeroSerie: data1[4].value,
+                    categoria: data1[7].value,
+                    marca: data1[8].value,
+                    cantidad: parseInt(data1[6].value),
+                    subtotal: (parseFloat(data1[5].value) * parseFloat(data1[6].value))
+                };
+
+                console.log(producto, 'Editar');
+
+                // Buscamos el PRODUTO dentro del listado
+                listadoProductos.forEach(item => {
+                    if (item.id == producto.id) {
+                        // Sustituimos el PRODUCTO con el producto editado
+                        item.cantidad = producto.cantidad;
+                        item.subtotal = producto.subtotal;
+                        console.log(item, 'elementoo a editar');
+                    }
+                });
+
+                // Init informacion de la grid (REFRESH INFORMACION)
+                cargarGrid(listadoProductos);
+
+                // Calculamos el monto total de la RENTA
+                calcularMontRenta(listadoProductos);
+
+                console.log('formulario de edicion ');
             }
 
-            console.log('llenar ');
-            // Init informacion de la grid
-            cargarGrid(listadoProductos);
-            // Calculamos el monto total de la RENTA
-            calcularMontRenta(listadoProductos);
 
-        } else if (actionButton == 2) {
-
-            // Creamos la estructura del objeto PRODUCTO
-            let producto = {
-                id: data1[0].value,
-                nombre: data1[1].value,
-                descripcion: data1[3].value,
-                estadoFisico: data1[10].value,
-                precioUnitario: data1[5].value,
-                unidadMedida: data1[9].value,
-                numeroSerie: data1[4].value,
-                categoria: data1[7].value,
-                marca: data1[8].value,
-                cantidad: parseInt(data1[6].value),
-                subtotal: (parseFloat(data1[5].value) * parseFloat(data1[6].value))
-            };
-
-            console.log(producto, 'Editar');
-
-            // Buscamos el PRODUTO dentro del listado
-            listadoProductos.forEach(item => {
-                if (item.id == producto.id) {
-                    // Sustituimos el PRODUCTO con el producto editado
-                    item.cantidad = producto.cantidad;
-                    item.subtotal = producto.subtotal;
-                    console.log(item, 'elementoo a editar');
-                }
-            });
-
-            // Init informacion de la grid (REFRESH INFORMACION)
-            cargarGrid(listadoProductos);
-
-            // Calculamos el monto total de la RENTA
-            calcularMontRenta(listadoProductos);
-
-            console.log('formulario de edicion ');
+            // Cerramos el modal cuendo se agrega el producto
+            $("#MyModal").modal("hide");
+            $("#loadingStatus").html(" ");
         }
-
-
-        // Cerramos el modal cuendo se agrega el producto
-        $("#MyModal").modal("hide");
-        $("#loadingStatus").html(" ");
     });
 
 
@@ -399,25 +412,25 @@
                 closeOnConfirm: false,
                 closeOnCancel: false
             },
-            function (isConfirm) {
-                if (isConfirm) {
-                    // Eliminamos el PRODCUTO
-                    listadoProductos.splice(productoEliminarIndex, 1);
+                function (isConfirm) {
+                    if (isConfirm) {
+                        // Eliminamos el PRODCUTO
+                        listadoProductos.splice(productoEliminarIndex, 1);
 
-                    // Refresh informacion de la GRID
-                    cargarGrid(listadoProductos);
+                        // Refresh informacion de la GRID
+                        cargarGrid(listadoProductos);
 
-                    // Calculamos el monto total de la RENTA
-                    calcularMontRenta(listadoProductos);
+                        // Calculamos el monto total de la RENTA
+                        calcularMontRenta(listadoProductos);
 
-                    console.log(listadoProductos, productoEliminarIndex);
+                        console.log(listadoProductos, productoEliminarIndex);
 
-                    // Mensaje de eliminado correctamneter
-                    swal("Eliminado Correctamente", "", "success");
-                } else {
-                    swal("Cancelado", "", "error");
-                }
-            });
+                        // Mensaje de eliminado correctamneter
+                        swal("Eliminado Correctamente", "", "success");
+                    } else {
+                        swal("Cancelado", "", "error");
+                    }
+                });
 
         }
     }
@@ -425,9 +438,23 @@
     // Funcion para obtener el valor del del select de productos
     function onProductochange(value) {
         console.log(value);
-
-        // init peticion para obtener producto
-        getProduct(value);
+        if (value == '') {
+            $("#prodId").val('');
+            $("#prodName").val('');
+            $("#prodDescripcion").val('');
+            $("#prodNmSerie").val('');
+            $("#prodPrecio").val('');
+            $("#prodCategoria").val('');
+            $("#prodMarca").val('');
+            $("#prodUM").val('');
+            $("#prodEstadoFisico").val('');
+            $("#prodCantidad").val('');
+            $("#prodIdSelect option:selected").val('');
+            $("#prodIdSelect").val('');
+        } else {
+            // init peticion para obtener producto
+            getProduct(value);
+        }
     }
 
     // Funcion para obtener los datos completos del producto
@@ -514,4 +541,45 @@
     });
 
 
+    // Funcion para VALIDAR FORMULARIO
+    function validateFormulario() {
+        let contadorValidaciones = 0, cantidadValid = 2;
+
+        var cantidad = $('#prodCantidad').val();
+        var idProducto = $('#prodId').val();//prodIdSelect
+
+        console.log(idProducto, 'ID--->');
+        if (cantidad < 1) {
+            $('#errorCantidad').remove();
+            $('#prodCantidad').after('<span id="errorCantidad" class="error field-validation-erro">El campo cantidad es obligatorio.</span>');
+        } else {
+            $('#errorCantidad').remove();
+            // Aumentamos el contador
+            contadorValidaciones ++;
+        }
+
+        if (idProducto == 0 || idProducto == undefined || idProducto == null) {
+            $('#errorIdprod').remove();
+            $('#prodIdSelect    ').after('<span id="errorIdprod" class="error field-validation-erro">El campo producto es obligatorio.</span>');
+        } else {
+            $('#errorIdprod').remove();
+
+            // Aumentamos el contador
+            contadorValidaciones++;
+        }
+
+        console.log(contadorValidaciones);
+
+        if (cantidadValid == contadorValidaciones) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    // Funcion para eliminar las etiquetas de SPAN error del POPUP
+    function deteleTagsErrors() {
+        $('#errorCantidad').remove();
+        $('#errorIdprod').remove();
+    }
 </script>
