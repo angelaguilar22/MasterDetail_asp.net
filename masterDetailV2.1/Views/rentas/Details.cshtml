@@ -81,6 +81,7 @@
                     <th>Unidad de Medida</th>
                     <th>Categoria</th>
                     <th>Entregado</th>
+                    <th>Acciones</th>
                 </tr>
 
             </thead>
@@ -91,7 +92,7 @@
         </table>
     </div>
 
-    <div class="col-md-12" style="margin-top: 10%; margin-bottom: 15px">
+    <div class="col-md-12" style="margin-top: 10%; margin-bottom: 15px" >
         @Html.ActionLink("Regresar al listado", "Index")
     </div>
 
@@ -128,9 +129,25 @@
 
                     // Generamosla GRID dinamicamente
                     listadoProductos.forEach(producto => {
-
-                        // Generamos el elemento html a agregar a la GRID
-                        var Data = "<tr class='row_" + producto.id + "'>" +
+                        var Data = "";
+                        if (producto.entregado == 1) {
+                            // Generamos el elemento html a agregar a la GRID
+                            Data = "<tr class='row_" + producto.id + "'>" +
+                            "<td>" + producto.nombre + "</td>" +
+                            "<td>" + producto.descripcion + "</td>" +
+                            "<td>" + producto.marca + "</td>" +
+                            "<td>" + producto.numeroSerie + "</td>" +
+                            "<td>" + producto.estadoFisico + "</td>" +
+                            "<td>" + producto.precioUnitario + "</td>" +
+                            "<td>" + producto.cantidad + "</td>" +
+                            "<td>" + producto.unidadMedida + "</td>" +
+                            "<td>" + producto.categoria + "</td>" +
+                            "<td>" + producto.entregado + "</td>" +
+                            "<td>" + "</td>" +
+                            "</tr>";
+                        } else {
+                            // Generamos el elemento html a agregar a la GRID
+                             Data = "<tr class='row_" + producto.id + "'>" +
                             "<td>" + producto.nombre + "</td>" +
                             "<td>" + producto.descripcion + "</td>" +
                             "<td>" + producto.marca + "</td>" +
@@ -143,6 +160,7 @@
                             "<td>" + producto.entregado + "</td>" +
                             "<td>" + "<a href='#' class='btn btn-primary' onclick='recibirProducto(" + producto.id +"," +idRenta + ")' >Recibir</a>" + "</td>" +
                             "</tr>";
+                        }
 
                         // Cuerpo de la GRID
                         SetData.append(Data);
