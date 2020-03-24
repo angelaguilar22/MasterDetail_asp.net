@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="61b469c3b79540449c9fdcfc3d52499d" Name="Diagram1" ZoomLevel="82" >
+        <EntityTypeShape EntityType="RentaCamionesModel.almacen" Width="1.5" PointX="6" PointY="0.75" />
+        <EntityTypeShape EntityType="RentaCamionesModel.almacenProductos" Width="1.5" PointX="8.25" PointY="4.75" />
+        <EntityTypeShape EntityType="RentaCamionesModel.calendarios" Width="1.5" PointX="13" PointY="2.75" />
+        <EntityTypeShape EntityType="RentaCamionesModel.clientes" Width="1.5" PointX="3" PointY="14.75" />
+        <EntityTypeShape EntityType="RentaCamionesModel.descuentos" Width="1.5" PointX="10.75" PointY="19" />
+        <EntityTypeShape EntityType="RentaCamionesModel.empleados" Width="1.5" PointX="8" PointY="8.75" />
+        <EntityTypeShape EntityType="RentaCamionesModel.estatusRenta" Width="1.5" PointX="10.75" PointY="6.5" />
+        <EntityTypeShape EntityType="RentaCamionesModel.facturas" Width="1.5" PointX="5.75" PointY="13.5" />
+        <EntityTypeShape EntityType="RentaCamionesModel.marcasProd" Width="1.5" PointX="0.75" PointY="5" />
+        <EntityTypeShape EntityType="RentaCamionesModel.modulos" Width="1.5" PointX="10.25" PointY="13" />
+        <EntityTypeShape EntityType="RentaCamionesModel.productos" Width="1.5" PointX="3" PointY="3.5" />
+        <EntityTypeShape EntityType="RentaCamionesModel.puesto" Width="1.5" PointX="5.75" PointY="9.5" />
+        <EntityTypeShape EntityType="RentaCamionesModel.rentaDetalle" Width="1.5" PointX="5.25" PointY="4.5" />
+        <EntityTypeShape EntityType="RentaCamionesModel.rentas" Width="1.5" PointX="3" PointY="10.5" />
+        <EntityTypeShape EntityType="RentaCamionesModel.roles" Width="1.5" PointX="10.25" PointY="15.875" />
+        <EntityTypeShape EntityType="RentaCamionesModel.rolesUsuarioModulo" Width="1.5" PointX="12.5" PointY="9" />
+        <EntityTypeShape EntityType="RentaCamionesModel.tiposClientes" Width="1.5" PointX="0.75" PointY="15.375" />
+        <EntityTypeShape EntityType="RentaCamionesModel.tiposDescuentos" Width="1.5" PointX="10.75" PointY="3.125" />
+        <EntityTypeShape EntityType="RentaCamionesModel.tiposProductos" Width="1.5" PointX="0.75" PointY="1.5" />
+        <EntityTypeShape EntityType="RentaCamionesModel.unidadesMedida" Width="1.5" PointX="0.75" PointY="8.375" />
+        <EntityTypeShape EntityType="RentaCamionesModel.usuarios" Width="1.5" PointX="10.25" PointY="9" />
+        <AssociationConnector Association="RentaCamionesModel.FK__almacenPr__idAlm__4AB81AF0" />
+        <AssociationConnector Association="RentaCamionesModel.FK__almacenPr__idAlm__70DDC3D8" />
+        <AssociationConnector Association="RentaCamionesModel.FK__almacenPr__idPro__4BAC3F29" />
+        <AssociationConnector Association="RentaCamionesModel.FK__almacenPr__idPro__71D1E811" />
+        <AssociationConnector Association="RentaCamionesModel.FK__calendari__idDes__4D94879B" />
+        <AssociationConnector Association="RentaCamionesModel.FK__calendari__idDes__73BA3083" />
+        <AssociationConnector Association="RentaCamionesModel.FK__calendari__idTip__4CA06362" />
+        <AssociationConnector Association="RentaCamionesModel.FK__calendari__idTip__72C60C4A" />
+        <AssociationConnector Association="RentaCamionesModel.FK__clientes__idTipo__4E88ABD4" />
+        <AssociationConnector Association="RentaCamionesModel.FK__clientes__idTipo__74AE54BC" />
+        <AssociationConnector Association="RentaCamionesModel.FK__empleados__idPue__4F7CD00D" />
+        <AssociationConnector Association="RentaCamionesModel.FK__empleados__idPue__75A278F5" />
+        <AssociationConnector Association="RentaCamionesModel.FK__usuarios__idEmpl__02084FDA" />
+        <AssociationConnector Association="RentaCamionesModel.FK__usuarios__idEmpl__5BE2A6F2" />
+        <AssociationConnector Association="RentaCamionesModel.FK__productos__idMar__5070F446" />
+        <AssociationConnector Association="RentaCamionesModel.FK__productos__idMar__76969D2E" />
+        <AssociationConnector Association="RentaCamionesModel.FK__rolesUsua__idMod__00200768" />
+        <AssociationConnector Association="RentaCamionesModel.FK__rolesUsua__idMod__59FA5E80" />
+        <AssociationConnector Association="RentaCamionesModel.FK__productos__idTip__52593CB8" />
+        <AssociationConnector Association="RentaCamionesModel.FK__productos__idTip__787EE5A0" />
+        <AssociationConnector Association="RentaCamionesModel.FK__productos__idUM__5165187F" />
+        <AssociationConnector Association="RentaCamionesModel.FK__productos__idUM__778AC167" />
+        <AssociationConnector Association="RentaCamionesModel.FK__rentaDeta__idPro__534D60F1" />
+        <AssociationConnector Association="RentaCamionesModel.FK__rentaDeta__idPro__797309D9" />
+        <AssociationConnector Association="RentaCamionesModel.FK__rentaDeta__idRen__5441852A" />
+        <AssociationConnector Association="RentaCamionesModel.FK__rentaDeta__idRen__7A672E12" />
+        <AssociationConnector Association="RentaCamionesModel.FK__rolesUsua__idRol__59063A47" />
+        <AssociationConnector Association="RentaCamionesModel.FK__rolesUsua__idRol__7F2BE32F" />
+        <AssociationConnector Association="RentaCamionesModel.FK__rolesUsua__idUsu__01142BA1" />
+        <AssociationConnector Association="RentaCamionesModel.FK__rolesUsua__idUsu__5AEE82B9" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

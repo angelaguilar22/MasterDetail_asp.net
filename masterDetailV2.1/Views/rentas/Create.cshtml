@@ -498,8 +498,8 @@
         console.log(montoTotal, 'monto total de la renta');
 
         // Seteamos los valores de MONTO TOTAL Y PRODUCTOS TOTALES A LA RENTA
-        $("#rentaMontoTotal").val(montoTotal);
-        $("#rentaSubtotal").val(montoTotal);
+        $("#rentaMontoTotal").val(montoTotal.toFixed(2));
+        $("#rentaSubtotal").val(montoTotal.toFixed(2));
         $("#rentaProductosTotales").val(listadoProductos.length);
     }
 
